@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yehonatan Mimon - Mathematics</title>
+  
+  <!-- MathJax for formulas -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    /* Classic Academic Google Sites theme */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #222222;
+      background-color: #f1f1f1;
+    }
+
+    #wrapper {
+      max-width: 1040px;
+      margin: 15px auto;
+      background-color: #ffffff;
+      border: 1px solid #d3d3d3;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    /* Header */
+    header {
+      padding: 22px 28px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    header h1 {
+      font-size: 22px;
+      font-weight: bold;
+      color: #333333;
+    }
+
+    header h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header p.subtitle {
+      font-size: 13px;
+      color: #666666;
+      margin-top: 3px;
+    }
+
+    /* Layout: Sidebar + Main Content */
+    #container {
+      display: flex;
+      min-height: 700px;
+    }
+
+    /* Sidebar Navigation (Google Sites style) */
+    nav#sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      background-color: #fcfcfc;
+      border-right: 1px solid #e5e5e5;
+      padding: 18px 12px;
+    }
+
+    nav#sidebar h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #555555;
+      margin-bottom: 10px;
+      padding-left: 8px;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 4px;
+    }
+
+    nav#sidebar ul {
+      list-style-type: none;
+      margin-bottom: 20px;
+    }
+
+    nav#sidebar li {
+      margin-bottom: 2px;
+    }
+
+    nav#sidebar a {
+      display: block;
+      padding: 6px 10px;
+      color: #1155cc;
+      text-decoration: none;
+      font-size: 13px;
+      border-radius: 3px;
+    }
+
+    nav#sidebar a:hover {
+      background-color: #eef3fc;
+      text-decoration: underline;
+    }
+
+    nav#sidebar a.active {
+      font-weight: bold;
+      color: #202124;
+      background-color: #e8eaed;
+      text-decoration: none;
+    }
+
+    /* Main Content Area */
+    main#content {
+      flex-grow: 1;
+      padding: 24px 34px 40px 34px;
+      background-color: #ffffff;
+    }
+
+    .page-section {
+      display: none;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    h2.page-title {
+      font-size: 18px;
+      color: #202124;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 6px;
+      margin-bottom: 16px;
+      font-weight: bold;
+    }
+
+    h3.section-subtitle {
+      font-size: 15px;
+      color: #1a0dab;
+      margin: 20px 0 8px 0;
+      font-weight: bold;
+    }
+
+    p {
+      margin-bottom: 14px;
+      text-align: justify;
+    }
+
+    /* Links */
+    a {
+      color: #1155cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Lists */
+    ul.bullet-list {
+      margin-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    ul.bullet-list li {
+      margin-bottom: 6px;
+    }
+
+    /* Information Box / Contact details */
+    .info-card {
+      background-color: #fafafa;
+      border: 1px solid #e5e5e5;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      border-radius: 2px;
+    }
+
+    .info-card p {
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    /* Academic Tables */
+    table.academic-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      margin-bottom: 22px;
+      font-size: 13px;
+    }
+
+    table.academic-table th, table.academic-table td {
+      border: 1px solid #dcdcdc;
+      padding: 7px 11px;
+      text-align: left;
+    }
+
+    table.academic-table th {
+      background-color: #f5f5f5;
+      color: #333;
+      font-weight: bold;
+    }
+
+    table.academic-table tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+
+    .badge-current {
+      display: inline-block;
+      padding: 2px 7px;
+      font-size: 11px;
+      font-weight: bold;
+      color: #0b6623;
+      background-color: #e6f4ea;
+      border-radius: 3px;
+      border: 1px solid #b7e1cd;
+    }
+
+    .note-link {
+      display: inline-block;
+      padding: 1px 6px;
+      background-color: #f1f3f4;
+      border: 1px solid #dadce0;
+      border-radius: 3px;
+      font-size: 11px;
+      color: #1a73e8;
+      text-decoration: none;
+    }
+
+    .note-link:hover {
+      background-color: #e8f0fe;
+      text-decoration: none;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid #e5e5e5;
+      padding: 12px 28px;
+      font-size: 11px;
+      color: #777777;
+      background-color: #fbfbfb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 740px) {
+      #container {
+        flex-direction: column;
+      }
+      nav#sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e5e5e5;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="wrapper">
+  <!-- Header -->
+  <header>
+    <h1><a href="#home" onclick="showPage('home')">Yehonatan Mimon</a></h1>
+    <p class="subtitle">Undergraduate Student &bull; Department of Mathematics &bull; Technion &ndash; Israel Institute of Technology</p>
+  </header>
+
+  <!-- Container -->
+  <div id="container">
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="#home" id="nav-home" class="active" onclick="showPage('home')">Home</a></li>
+        <li><a href="#journey" id="nav-journey" onclick="showPage('journey')">Academic Journey</a></li>
+        <li><a href="#research" id="nav-research" onclick="showPage('research')">Research & Interests</a></li>
+        <li><a href="#coursework" id="nav-coursework" onclick="showPage('coursework')">Coursework</a></li>
+        <li><a href="#talks" id="nav-talks" onclick="showPage('talks')">Talks & Presentations</a></li>
+        <li><a href="#writings" id="nav-writings" onclick="showPage('writings')">Notes & Writings</a></li>
+      </ul>
+
+      <h3>Links</h3>
+      <ul>
+        <li><a href="mailto:yehonatn.m@campus.technion.ac.il">Email (Technion)</a></li>
+        <li><a href="https://math.technion.ac.il" target="_blank">Technion Mathematics</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="content">
+      
+      <!-- PAGE: HOME -->
+      <section id="page-home" class="page-section active">
+        <h2 class="page-title">Home</h2>
+        
+        <div class="info-card">
+          <p><strong>Yehonatan Mimon</strong></p>
+          <p>Department of Mathematics</p>
+          <p>Technion &ndash; Israel Institute of Technology</p>
+          <p>Haifa 32000, Israel</p>
+          <p style="margin-top: 8px;"><strong>Email:</strong> <a href="mailto:yehonatn.m@campus.technion.ac.il">yehonatn.m@campus.technion.ac.il</a> / <a href="mailto:mimonyehonathn10@gmail.com">mimonyehonathn10@gmail.com</a></p>
+        </div>
+
+        <h3 class="section-subtitle">About Me</h3>
+        <p>
+          Welcome to my academic homepage. I am an undergraduate student in the Department of Mathematics at the <strong>Technion &ndash; Israel Institute of Technology</strong>.
+        </p>
+        <p>
+          My mathematical path began at an early age: after completing the advanced matriculation examination in mathematics at age 14, I initiated my academic university studies through the Open University of Israel (Academia in High School program). Following a transition to independent homeschooling and completing advanced transfer track coursework at the Technion, I formally matriculated as an undergraduate student at the Technion, where I am pursuing my degree in pure mathematics.
+        </p>
+
+        <h3 class="section-subtitle">Current Academic Focus</h3>
+        <p>
+          My mathematical interests revolve around pure and theoretical mathematics, with an emphasis on structural, theory-building perspectives in algebraic geometry, arithmetic geometry, and category theory. During the current academic semester (Winter 2027), I am engaging in advanced coursework spanning modern algebra, differentiable manifolds, real functions and measure theory, field theory, topology, and algebraic numbers, alongside dedicated exposure to departmental research.
+        </p>
+
+        <h3 class="section-subtitle">Future Academic Plans & Upcoming Projects</h3>
+        <p>
+          Looking ahead to <strong>Spring 2027</strong>, I plan to undertake an undergraduate research project under the supervision of <strong>Prof. Howard Nuer</strong> at the Technion, focusing on the moduli stack of vector bundles (\(\mathrm{Bun}_G\)) and foundational aspects of the Geometric Langlands program.
+        </p>
+        <p>
+          I plan to complete my B.Sc. degree in Mathematics at the Technion in Spring 2027, followed directly by M.Sc. studies in pure mathematics starting in Winter 2028, with the ultimate objective of pursuing doctoral research and an academic career in pure mathematics.
+        </p>
+
+        <h3 class="section-subtitle">Quick Documents</h3>
+        <ul class="bullet-list">
+          <li><strong>Curriculum Vitae:</strong> <a href="#">CV (Available upon request / PDF)</a></li>
+          <li><strong>Coursework & Study Materials:</strong> Full list available under <a href="#coursework" onclick="showPage('coursework')">Coursework</a>.</li>
+          <li><strong>Talks & Notes:</strong> Summaries available under <a href="#talks" onclick="showPage('talks')">Talks & Presentations</a> and <a href="#writings" onclick="showPage('writings')">Notes & Writings</a>.</li>
+        </ul>
+      </section>
+
+      <!-- PAGE: ACADEMIC JOURNEY -->
+      <section id="page-journey" class="page-section">
+        <h2 class="page-title">Academic Journey</h2>
+        
+        <p>
+          An overview of my academic trajectory and milestones:
+        </p>
+
+        <h3 class="section-subtitle">Chronology</h3>
+        <ul class="bullet-list">
+          <li>
+            <strong>Winter 2026 &ndash; Present:</strong> Undergraduate Mathematics Student, <em>Technion &ndash; Israel Institute of Technology</em>.
+          </li>
+          <li>
+            <strong>Spring 2025:</strong> External studies at Technion, completing the expanded transfer track requirements (אפיק מעבר).
+          </li>
+          <li>
+            <strong>Winter 2024 &ndash; Winter 2025:</strong> University studies at the <em>Open University of Israel</em> through the Academia in High School program (began at age 14).
+          </li>
+          <li>
+            <strong>Independent Study / Homeschooling:</strong> Transitioned from formal high school to independent, rigorous home study upon recommendation from the school administration and the Ministry of Education.
+          </li>
+          <li>
+            <strong>2024:</strong> Completed the 5-unit advanced high school matriculation exam in mathematics at age 14.
+          </li>
+        </ul>
+
+        <h3 class="section-subtitle">Methodology & Approach</h3>
+        <p>
+          I am drawn to top-down, conceptual mathematics that emphasizes large structural perspectives. I spend significant time working through foundational treatises independently—ranging from Serre's arithmetic texts to modern lecture notes on algebraic stacks and cluster algebras.
+        </p>
+      </section>
+
+      <!-- PAGE: RESEARCH & INTERESTS -->
+      <section id="page-research" class="page-section">
+        <h2 class="page-title">Research & Interests</h2>
+        
+        <p>
+          My mathematical interests lie primarily in abstract algebra, arithmetic geometry, and category theory:
+        </p>
+
+        <ul class="bullet-list">
+          <li><strong>The Langlands Program & Geometric Langlands:</strong> Moduli stack of \(G\)-bundles (\(\mathrm{Bun}_G\)), automorphic sheaves, and categorical perspectives.</li>
+          <li><strong>Arithmetic & Algebraic Geometry:</strong> Moduli spaces, vector bundles on curves, schemes, and Galois representations.</li>
+          <li><strong>Representation Theory & Reflection Groups:</strong> Coxeter groups, root systems, and related combinatorial structures.</li>
+          <li><strong>Cluster Algebras & Invariant Theory:</strong> Relations to Galois theory, fixed fields, and modular groups.</li>
+          <li><strong>Number Theory:</strong> \(p\)-adic analysis, local fields, Hilbert symbols, and Fourier analysis on number fields.</li>
+        </ul>
+
+        <h3 class="section-subtitle">Upcoming Research Project (Spring 2027)</h3>
+        <p>
+          <strong>Research Project on Moduli Stacks of Vector Bundles (\(\mathrm{Bun}_G\))</strong><br>
+          <em>To be supervised by Prof. Howard Nuer, Technion (Spring 2027)</em><br>
+          Focusing on the geometry of moduli stacks of vector bundles on algebraic curves, the uniformization theorem, and their roles in the Geometric Langlands framework.
+        </p>
+      </section>
+
+      <!-- PAGE: COURSEWORK -->
+      <section id="page-coursework" class="page-section">
+        <h2 class="page-title">Coursework</h2>
+        
+        <p>
+          A comprehensive record of university coursework completed and in progress across the Technion and the Open University (through Winter 2027). Course notes written during these courses are linked in the rightmost column.
+        </p>
+
+        <!-- Current Semester: Winter 2027 -->
+        <h3 class="section-subtitle">Current Semester: Technion &ndash; Winter 2027 <span class="badge-current">In Progress</span></h3>
+        <table class="academic-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Course Name</th>
+              <th style="width: 45%;">Subject / Area</th>
+              <th style="width: 20%;">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Modern Algebra 1</strong> (מודרנית 1)</td>
+              <td>Abstract Algebra / Group Theory & Rings</td>
+              <td><a href="courses/Modern_Algebra_1_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Differentiable Manifolds</strong> (יריעות)</td>
+              <td>Differential Geometry / Smooth Manifolds</td>
+              <td><a href="courses/Differentiable_Manifolds_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Real Functions</strong> (ממשיות)</td>
+              <td>Analysis / Measure Theory & Lebesgue Integration</td>
+              <td><a href="courses/Real_Functions_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Field Theory</strong> (תורת השדות)</td>
+              <td>Algebra / Field Extensions & Galois Theory</td>
+              <td><a href="courses/Field_Theory_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Topology</strong> (טופולוגיה)</td>
+              <td>General & Point-Set Topology</td>
+              <td><a href="courses/Topology_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Algebraic Numbers</strong> (מספרים אלגבריים)</td>
+              <td>Selected Topics in Number Theory / Algebraic Number Theory</td>
+              <td><a href="courses/Algebraic_Numbers_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Research Exposure</strong> (חשיפה למחקר)</td>
+              <td>Departmental Research Seminar & Exposure</td>
+              <td><a href="courses/Research_Exposure_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Technion: Summer 2026 -->
+        <h3 class="section-subtitle">Technion &ndash; Summer 2026</h3>
+        <table class="academic-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Course Name</th>
+              <th style="width: 45%;">Subject / Area</th>
+              <th style="width: 20%;">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>General Biology</strong> (ביולוגיה)</td>
+              <td>Natural Sciences / General Elective</td>
+              <td><a href="courses/Biology_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Humanities / General Elective 2</strong> (מל״ג 2)</td>
+              <td>Humanities & Social Sciences</td>
+              <td><a href="courses/Humanities_2_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Technion: Spring 2026 -->
+        <h3 class="section-subtitle">Technion &ndash; Spring 2026</h3>
+        <table class="academic-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Course Name</th>
+              <th style="width: 45%;">Subject / Area</th>
+              <th style="width: 20%;">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Cluster Algebras</strong> (אלגבראות קלסטר)</td>
+              <td>Advanced Topics in Algebra / Cluster Algebras</td>
+              <td><a href="Cluster_algebra_lecture (5).pdf" target="_blank" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Modules</strong> (מודולים)</td>
+              <td>Ring Theory / Module Theory</td>
+              <td><a href="courses/Modules_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Foundations of Geometry</strong> (יסודות הגאומטריה)</td>
+              <td>Euclidean, Spherical, Hyperbolic & Projective Geometry</td>
+              <td><a href="courses/Foundations_of_Geometry_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Geometry and Symmetry</strong> (גיאומטריה וסימטריה)</td>
+              <td>Symmetry Groups / Geometric Transformations</td>
+              <td><a href="courses/Geometry_and_Symmetry_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Undergraduate Seminar in Algebra 1</strong> (סמינר באלגברה להסמכה 1)</td>
+              <td>Algebra Seminar (Delivered 1.5h lecture on Coxeter groups & Serre lectures)</td>
+              <td><a href="#talks" onclick="showPage('talks')" class="note-link">Lectures (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Beginner Japanese</strong> (יפנית למתחילים)</td>
+              <td>Foreign Languages</td>
+              <td><a href="courses/Japanese_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Physical Education</strong> (חנ״ג)</td>
+              <td>General Requirement</td>
+              <td>&mdash;</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Technion: Winter 2026 -->
+        <h3 class="section-subtitle">Technion &ndash; Winter 2026</h3>
+        <table class="academic-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Course Name</th>
+              <th style="width: 45%;">Subject / Area</th>
+              <th style="width: 20%;">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Introduction to Metric and Topological Spaces</strong> (מטר״ו)</td>
+              <td>Topology / Metric Spaces</td>
+              <td><a href="courses/Metric_Spaces_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Introduction to Rings and Fields</strong> (מבחו״ש)</td>
+              <td>Abstract Algebra / Commutative & Non-commutative Rings</td>
+              <td><a href="courses/Rings_and_Fields_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Undergraduate Seminar in Algebra 2</strong> (סמינר באלגברה להסמכה 2)</td>
+              <td>Advanced Topics Seminar</td>
+              <td><a href="#talks" onclick="showPage('talks')" class="note-link">Lectures (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Theory of Functions / Complex Analysis</strong> (תורת הפונקציות)</td>
+              <td>Complex Analysis / Holomorphic Functions</td>
+              <td><a href="courses/Complex_Analysis_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Infinitesimal Calculus 3</strong> (אינפי 3)</td>
+              <td>Multivariable Advanced Calculus</td>
+              <td><a href="courses/Calculus_3_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Humanities / General Elective 1</strong> (מל״ג 1)</td>
+              <td>Humanities & Social Sciences</td>
+              <td><a href="courses/Humanities_1_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Technion: Spring 2025 -->
+        <h3 class="section-subtitle">Technion &ndash; Spring 2025</h3>
+        <table class="academic-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Course Name</th>
+              <th style="width: 45%;">Subject / Area</th>
+              <th style="width: 20%;">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Ordinary Differential Equations</strong> (מד״ר א')</td>
+              <td>Differential Equations & Dynamical Systems</td>
+              <td><a href="courses/ODE_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Introduction to Groups</strong> (מבוא לחבורות)</td>
+              <td>Group Theory / Subgroups, Quotients, Group Actions</td>
+              <td><a href="courses/Group_Theory_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Set Theory</strong> (תורת הקבוצות)</td>
+              <td>Axiomatic Set Theory / Cardinals & Ordinals</td>
+              <td><a href="courses/Set_Theory_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Introduction to Computer Science (Python)</strong> (פייתון)</td>
+              <td>Computer Science / Algorithms & Programming</td>
+              <td><a href="courses/Python_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Physics 1M &ndash; Mechanics</strong> (פיזיקה 1מ)</td>
+              <td>Classical Mechanics</td>
+              <td><a href="courses/Physics_1M_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Transfer Track / Open University -->
+        <h3 class="section-subtitle">Transfer Track / Open University Foundation</h3>
+        <table class="academic-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Course Name</th>
+              <th style="width: 45%;">Subject / Area</th>
+              <th style="width: 20%;">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Linear Algebra 1</strong> (אלגברה א')</td>
+              <td>Vector Spaces, Linear Transformations, Matrices</td>
+              <td><a href="courses/Linear_Algebra_1_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Linear Algebra 2</strong> (אלגברה ב')</td>
+              <td>Inner Product Spaces, Diagonalization, Canonical Forms</td>
+              <td><a href="courses/Linear_Algebra_2_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Infinitesimal Calculus 1</strong> (אינפי 1)</td>
+              <td>Limits, Continuity, Differentiation in One Variable</td>
+              <td><a href="courses/Calculus_1_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Infinitesimal Calculus 2</strong> (אינפי 2)</td>
+              <td>Integration, Series, Sequences of Functions</td>
+              <td><a href="courses/Calculus_2_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Combinatorics</strong> (קומבינטוריקה)</td>
+              <td>Enumerative Combinatorics, Generating Functions, Graphs</td>
+              <td><a href="courses/Combinatorics_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Foundational Concepts / Logic & Sets</strong> (מושגי יסוד)</td>
+              <td>Mathematical Logic, Relations, Functions, Proof Techniques</td>
+              <td><a href="courses/Foundational_Concepts_Notes.pdf" class="note-link">Notes (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Foundations of Physics</strong> (יסודות הפיזיקה)</td>
+              <td>Introductory Physics</td>
+              <td>&mdash;</td>
+            </tr>
+            <tr>
+              <td><strong>English Exemption</strong> (פטור אנגלית)</td>
+              <td>Academic Language Proficiency</td>
+              <td>&mdash;</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- PAGE: TALKS & PRESENTATIONS -->
+      <section id="page-talks" class="page-section">
+        <h2 class="page-title">Talks & Seminars</h2>
+        
+        <p>Lecture notes and presentation files for seminars and talks delivered at the Technion:</p>
+
+        <ul class="bullet-list">
+          <li style="margin-bottom: 18px;">
+            <strong>"From Galois to Clusters: Fixed Fields, Modular Groups, and Invariants"</strong><br>
+            <em>Technion Cluster Algebra Course, September 2026</em><br>
+            A 2.5-hour seminar lecture connecting Galois theory, cluster structures, modular group actions, and invariant subrings.<br>
+            <a href="Cluster_algebra_lecture (5).pdf" target="_blank" class="note-link" style="margin-top: 4px;">&DownArrow; Lecture Notes (PDF)</a>
+          </li>
+          <li style="margin-bottom: 18px;">
+            <strong>Lecture Series on Jean-Pierre Serre's <em>"A Course in Arithmetic"</em></strong><br>
+            <em>Technion Mathematics Seminars, May &ndash; June 2026</em><br>
+            Delivered three structured lectures covering \(p\)-adic analysis, quadratic forms, and modular forms:
+            <ul style="margin-left: 20px; margin-top: 6px; list-style-type: circle;">
+              <li style="margin-bottom: 6px;">
+                <strong>Lecture 1:</strong> The field of \(p\)-adic numbers \(\mathbb{Q}_p\), squares in \(\mathbb{Q}_p\), and local analysis.<br>
+                <a href="הרצאה 1 סמינר אלגברה להסמכה 1.pdf" target="_blank" class="note-link">&DownArrow; Lecture 1 Notes (PDF)</a>
+              </li>
+              <li style="margin-bottom: 6px;">
+                <strong>Lecture 2:</strong> Hilbert symbols, quadratic forms, and the Hasse-Minkowski theorem over \(\mathbb{Q}\).<br>
+                <a href="הרצאה 2 סמינר אלגברה להסמכה 1.pdf" target="_blank" class="note-link">&DownArrow; Lecture 2 Notes (PDF)</a>
+              </li>
+              <li style="margin-bottom: 6px;">
+                <strong>Lecture 3 (Part A):</strong> Lattices, Eisenstein series, the modular discriminant \(\Delta\), and dimension formulas for \(M_k\).<br>
+                <a href="הרצאה 3 חלק א סמינר אלגברה להסמכה 1_1.pdf" target="_blank" class="note-link">&DownArrow; Lecture 3 (Part A) Notes (PDF)</a>
+              </li>
+              <li style="margin-bottom: 6px;">
+                <strong>Lecture 3 (Part B):</strong> The modular \(j\)-invariant, valence formula, and Monstrous Moonshine.<br>
+                <a href="הרצאה 3 חלק ב.pdf" target="_blank" class="note-link">&DownArrow; Lecture 3 (Part B) Notes (PDF)</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>"Reflection Groups and Coxeter Systems"</strong><br>
+            <em>Technion Coxeter Groups Seminar, 2026</em><br>
+            A 1.5-hour lecture presenting the classification of finite Coxeter groups, root systems, and geometric representations.
+          </li>
+        </ul>
+      </section>
+
+      <!-- PAGE: NOTES & WRITINGS -->
+      <section id="page-writings" class="page-section">
+        <h2 class="page-title">Notes & Writings</h2>
+        
+        <p>
+          A selection of study notes, expository write-ups, and early conceptual explorations:
+        </p>
+
+        <h3 class="section-subtitle">Expository & Study Notes</h3>
+        <ul class="bullet-list">
+          <li>
+            <strong>Independent Study Notes: Fourier Analysis on Number Fields</strong> (Summer 2026)<br>
+            Detailed study notes following Ramakrishnan &amp; Valenza, covering Tate's thesis, characters of local fields, and Hecke \(L\)-functions.
+          </li>
+        </ul>
+
+        <h3 class="section-subtitle">Conceptual Ideas &amp; Explorations</h3>
+        <ul class="bullet-list">
+          <li>
+            <strong>"Locally Polynomial Spaces over Topological Rings" (\(\mathcal{LP}_R^1(X, \mathcal{A})\))</strong> (Conceptual Notes &bull; May 2026)<br>
+            An exploratory framework and preliminary notes investigating sheaf-theoretic constructions and topological properties of functions locally given by polynomials over topological rings (work-in-progress / conceptual draft).
+          </li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div>&copy; 2026 Yehonatan Mimon &bull; Technion &ndash; Israel Institute of Technology</div>
+    <div>Last updated: October 2026</div>
+  </footer>
+</div>
+
+<!-- Page Switcher Script (Emulating Google Sites multi-page navigation) -->
+<script>
+  function showPage(pageId) {
+    // Hide all pages
+    const pages = document.querySelectorAll('.page-section');
+    pages.forEach(p => p.classList.remove('active'));
+
+    // Deactivate all nav links
+    const navLinks = document.querySelectorAll('nav#sidebar a');
+    navLinks.forEach(link => link.classList.remove('active'));
+
+    // Show selected page
+    const target = document.getElementById('page-' + pageId);
+    if (target) {
+      target.classList.add('active');
+    }
+
+    // Set active link
+    const activeLink = document.getElementById('nav-' + pageId);
+    if (activeLink) {
+      activeLink.classList.add('active');
+    }
+
+    // Retrigger MathJax if available
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      MathJax.typesetPromise();
+    }
+
+    window.scrollTo(0, 0);
+  }
+
+  // Handle hash on load
+  window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && document.getElementById('page-' + hash)) {
+      showPage(hash);
+    }
+  });
+</script>
+
+</body>
+</html>
