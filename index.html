@@ -4,432 +4,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yehonatan Mimon - Mathematics</title>
-
-  <!-- MathJax for formulas -->
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
   <style>
-    :root {
-      --ink: #182638;
-      --muted: #667487;
-      --line: #e4e9ef;
-      --paper: #f4f6f8;
-      --blue: #315f91;
-      --blue-soft: #edf3f9;
-      --white: #ffffff;
+    :root { --ink:#182638; --muted:#667487; --line:#e4e9ef; --paper:#f4f6f8; --blue:#315f91; --blue-soft:#edf3f9; --white:#fff; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; font-size:15px; line-height:1.75; color:var(--ink); background:var(--paper); }
+    #wrapper { max-width:1180px; margin:36px auto; background:var(--white); border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:0 18px 55px rgba(26,43,63,.07); }
+    header { padding:30px 42px 26px; background:linear-gradient(120deg,#fff 0%,#f7faff 100%); border-bottom:1px solid var(--line); }
+    header h1 { font-size:27px; letter-spacing:-.7px; font-weight:700; color:#172b42; }
+    header h1 a { color:inherit; text-decoration:none; }
+    header p.subtitle { font-size:13px; color:var(--muted); margin-top:4px; letter-spacing:.2px; }
+    #container { display:flex; min-height:700px; }
+    nav#sidebar { width:232px; flex-shrink:0; background:#fbfcfd; border-right:1px solid var(--line); padding:30px 18px; }
+    nav#sidebar h3 { font-size:10px; text-transform:uppercase; letter-spacing:1.4px; color:#8995a4; margin:0 10px 12px; padding:0 0 9px; border-bottom:1px solid var(--line); }
+    nav#sidebar ul { list-style:none; margin:0 0 28px; }
+    nav#sidebar li { margin:3px 0; }
+    nav#sidebar a { display:block; padding:9px 12px; color:#526277; text-decoration:none; font-size:13px; border-radius:8px; transition:background .18s,color .18s; }
+    nav#sidebar a:hover { background:var(--blue-soft); color:var(--blue); text-decoration:none; }
+    nav#sidebar a.active { font-weight:650; color:#234e7b; background:#eaf1f8; }
+    main#content { flex:1; min-width:0; padding:38px 48px 54px; background:var(--white); }
+    .page-section { display:none; }
+    .page-section.active { display:block; }
+    h2.page-title { font-size:23px; letter-spacing:-.45px; color:#1c3047; padding-bottom:13px; margin-bottom:25px; border-bottom:1px solid var(--line); }
+    h3.section-subtitle { font-size:16px; color:#315b83; margin:30px 0 11px; font-weight:650; letter-spacing:-.1px; }
+    p { margin:0 0 16px; color:#3c4b5d; text-align:left; }
+    a { color:#315f91; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    ul.bullet-list { margin:0 0 20px 22px; color:#3c4b5d; }
+    ul.bullet-list li { margin:0 0 10px; padding-left:3px; }
+    .profile-hero { display:grid; grid-template-columns:112px minmax(0,1fr); gap:24px; align-items:center; padding:25px; background:linear-gradient(120deg,#f7faff,#fff); border:1px solid var(--line); border-radius:15px; margin:0 0 30px; }
+    .profile-avatar { width:108px; height:108px; border-radius:50%; object-fit:cover; border:4px solid #fff; box-shadow:0 3px 16px rgba(24,45,69,.13); }
+    .profile-eyebrow { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:#6b8199; font-weight:700; margin-bottom:5px; }
+    .profile-name { font-size:25px; line-height:1.25; letter-spacing:-.7px; color:#192f48; margin-bottom:4px; }
+    .profile-hebrew { font-size:15px; color:#66778b; margin-bottom:9px; }
+    .profile-summary { font-size:14px; color:#526277; margin:0 0 12px; }
+    .profile-meta { display:flex; flex-wrap:wrap; gap:8px 18px; font-size:12px; color:#526277; }
+    .profile-meta span { display:inline-flex; align-items:center; gap:6px; }
+    .profile-meta a { overflow-wrap:anywhere; }
+    table.academic-table { width:100%; border-collapse:separate; border-spacing:0; margin:14px 0 28px; font-size:13px; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+    table.academic-table th, table.academic-table td { border-bottom:1px solid var(--line); padding:11px 13px; text-align:left; vertical-align:top; }
+    table.academic-table th { background:#f5f8fb; color:#526277; font-size:11px; text-transform:uppercase; letter-spacing:.65px; }
+    table.academic-table tr:last-child td { border-bottom:0; }
+    table.academic-table tr:nth-child(even) td { background:#fcfdfe; }
+    .badge-current { display:inline-block; padding:2px 9px; margin-left:7px; font-size:10px; font-weight:700; color:#286247; background:#eaf5ef; border-radius:20px; vertical-align:2px; }
+    .note-link { display:inline-block; padding:4px 9px; background:#f0f5fa; border:1px solid #dce7f1; border-radius:6px; font-size:11px; color:#315f91; white-space:nowrap; }
+    .note-link:hover { background:#e5eef7; text-decoration:none; }
+    footer { border-top:1px solid var(--line); padding:17px 32px; font-size:11px; color:#8792a0; background:#fbfcfd; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    @media (max-width:800px) {
+      #wrapper { margin:12px; border-radius:13px; }
+      header { padding:24px; }
+      #container { flex-direction:column; }
+      nav#sidebar { width:100%; border-right:0; border-bottom:1px solid var(--line); padding:17px 20px; }
+      nav#sidebar ul { display:flex; flex-wrap:wrap; gap:3px; margin-bottom:15px; }
+      nav#sidebar li { margin:0; }
+      nav#sidebar h3 { margin-top:5px; }
+      main#content { padding:28px 24px 40px; }
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      font-size: 15px;
-      line-height: 1.75;
-      color: var(--ink);
-      background: var(--paper);
-    }
-
-    #wrapper {
-      max-width: 1180px;
-      margin: 36px auto;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 18px 55px rgba(26, 43, 63, 0.07);
-    }
-
-    /* Header */
-    header {
-      padding: 30px 42px 26px;
-      background: linear-gradient(120deg, #ffffff 0%, #f7faff 100%);
-      border-bottom: 1px solid var(--line);
-    }
-
-    header h1 {
-      font-size: 27px;
-      letter-spacing: -0.7px;
-      font-weight: 700;
-      color: #172b42;
-    }
-
-    header h1 a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    header p.subtitle {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 4px;
-      letter-spacing: 0.2px;
-    }
-
-    /* Layout: Sidebar + Main Content */
-    #container {
-      display: flex;
-      min-height: 700px;
-    }
-
-    /* Sidebar Navigation */
-    nav#sidebar {
-      width: 232px;
-      flex-shrink: 0;
-      background: #fbfcfd;
-      border-right: 1px solid var(--line);
-      padding: 30px 18px;
-    }
-
-    nav#sidebar h3 {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1.4px;
-      color: #8995a4;
-      margin: 0 10px 12px;
-      padding: 0 0 9px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    nav#sidebar ul {
-      list-style: none;
-      margin: 0 0 28px;
-    }
-
-    nav#sidebar li {
-      margin: 3px 0;
-    }
-
-    nav#sidebar a {
-      display: block;
-      padding: 9px 12px;
-      color: #526277;
-      text-decoration: none;
-      font-size: 13px;
-      border-radius: 8px;
-      transition: background 0.18s, color 0.18s;
-    }
-
-    nav#sidebar a:hover {
-      background: var(--blue-soft);
-      color: var(--blue);
-      text-decoration: none;
-    }
-
-    nav#sidebar a.active {
-      font-weight: 650;
-      color: #234e7b;
-      background: #eaf1f8;
-    }
-
-    /* Main Content Area */
-    main#content {
-      flex: 1;
-      min-width: 0;
-      padding: 38px 48px 54px;
-      background: var(--white);
-    }
-
-    .page-section {
-      display: none;
-    }
-
-    .page-section.active {
-      display: block;
-    }
-
-    h2.page-title {
-      font-size: 23px;
-      letter-spacing: -0.45px;
-      color: #1c3047;
-      padding-bottom: 13px;
-      margin-bottom: 25px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    h3.section-subtitle {
-      font-size: 16px;
-      color: #315b83;
-      margin: 30px 0 11px;
-      font-weight: 650;
-      letter-spacing: -0.1px;
-    }
-
-    p {
-      margin: 0 0 16px;
-      color: #3c4b5d;
-      text-align: left;
-    }
-
-    a {
-      color: #315f91;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    ul.bullet-list {
-      margin: 0 0 20px 22px;
-      color: #3c4b5d;
-    }
-
-    ul.bullet-list li {
-      margin: 0 0 10px;
-      padding-left: 3px;
-    }
-
-    /* Profile Card */
-    .profile-hero {
-      display: grid;
-      grid-template-columns: 112px minmax(0, 1fr);
-      gap: 24px;
-      align-items: center;
-      padding: 25px;
-      background: linear-gradient(120deg, #f7faff, #ffffff);
-      border: 1px solid var(--line);
-      border-radius: 15px;
-      margin: 0 0 30px;
-    }
-
-    .profile-avatar {
-      width: 108px;
-      height: 108px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #ffffff;
-      box-shadow: 0 3px 16px rgba(24, 45, 69, 0.13);
-    }
-
-    .profile-eyebrow {
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #6b8199;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-
-    .profile-name {
-      font-size: 25px;
-      line-height: 1.25;
-      letter-spacing: -0.7px;
-      color: #192f48;
-      margin-bottom: 4px;
-    }
-
-    .profile-hebrew {
-      font-size: 15px;
-      color: #66778b;
-      margin-bottom: 9px;
-    }
-
-    .profile-summary {
-      font-size: 14px;
-      color: #526277;
-      margin: 0 0 12px;
-    }
-
-    .profile-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 18px;
-      font-size: 12px;
-      color: #526277;
-    }
-
-    .profile-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .profile-meta a {
-      overflow-wrap: anywhere;
-    }
-
-    /* Academic Tables */
-    table.academic-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      margin: 14px 0 28px;
-      font-size: 13px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    table.academic-table th,
-    table.academic-table td {
-      border-bottom: 1px solid var(--line);
-      padding: 11px 13px;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    table.academic-table th {
-      background: #f5f8fb;
-      color: #526277;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.65px;
-    }
-
-    table.academic-table tr:last-child td {
-      border-bottom: 0;
-    }
-
-    table.academic-table tr:nth-child(even) td {
-      background: #fcfdfe;
-    }
-
-    .badge-current {
-      display: inline-block;
-      padding: 2px 9px;
-      margin-left: 7px;
-      font-size: 10px;
-      font-weight: 700;
-      color: #286247;
-      background: #eaf5ef;
-      border-radius: 20px;
-      vertical-align: 2px;
-    }
-
-    .note-link {
-      display: inline-block;
-      padding: 4px 9px;
-      background: #f0f5fa;
-      border: 1px solid #dce7f1;
-      border-radius: 6px;
-      font-size: 11px;
-      color: #315f91;
-      white-space: nowrap;
-    }
-
-    .note-link:hover {
-      background: #e5eef7;
-      text-decoration: none;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 17px 32px;
-      font-size: 11px;
-      color: #8792a0;
-      background: #fbfcfd;
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    /* Responsive */
-    @media (max-width: 800px) {
-      #wrapper {
-        margin: 12px;
-        border-radius: 13px;
-      }
-
-      header {
-        padding: 24px;
-      }
-
-      #container {
-        flex-direction: column;
-      }
-
-      nav#sidebar {
-        width: 100%;
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-        padding: 17px 20px;
-      }
-
-      nav#sidebar ul {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 3px;
-        margin-bottom: 15px;
-      }
-
-      nav#sidebar li {
-        margin: 0;
-      }
-
-      nav#sidebar h3 {
-        margin-top: 5px;
-      }
-
-      main#content {
-        padding: 28px 24px 40px;
-      }
-    }
-
-    @media (max-width: 520px) {
-      body {
-        font-size: 14px;
-      }
-
-      header h1 {
-        font-size: 23px;
-      }
-
-      .profile-hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-        justify-items: center;
-        padding: 22px;
-      }
-
-      .profile-meta {
-        justify-content: center;
-      }
-
-      .profile-name {
-        font-size: 22px;
-      }
-
-      main#content {
-        padding: 24px 17px 34px;
-      }
-
-      h2.page-title {
-        font-size: 21px;
-      }
-
-      table.academic-table {
-        font-size: 11px;
-      }
-
-      table.academic-table th,
-      table.academic-table td {
-        padding: 8px 7px;
-      }
+    @media (max-width:520px) {
+      body { font-size:14px; }
+      header h1 { font-size:23px; }
+      .profile-hero { grid-template-columns:1fr; text-align:center; justify-items:center; padding:22px; }
+      .profile-meta { justify-content:center; }
+      .profile-name { font-size:22px; }
+      main#content { padding:24px 17px 34px; }
+      h2.page-title { font-size:21px; }
+      table.academic-table { font-size:11px; }
+      table.academic-table th, table.academic-table td { padding:8px 7px; }
     }
   </style>
 </head>
 <body>
 
 <div id="wrapper">
-  <!-- Header -->
   <header>
     <h1><a href="#home" onclick="showPage('home')">Yehonatan Mimon</a></h1>
     <p class="subtitle">Undergraduate Student &bull; Department of Mathematics &bull; Technion &ndash; Israel Institute of Technology</p>
   </header>
 
-  <!-- Container -->
   <div id="container">
-    <!-- Sidebar Navigation -->
     <nav id="sidebar">
       <h3>Navigation</h3>
       <ul>
@@ -442,7 +95,6 @@
       </ul>
     </nav>
 
-    <!-- Main Content -->
     <main id="content">
 
       <!-- PAGE: HOME -->
@@ -501,27 +153,15 @@
       <section id="page-journey" class="page-section">
         <h2 class="page-title">Academic Journey</h2>
 
-        <p>
-          An overview of my academic trajectory and milestones:
-        </p>
+        <p>An overview of my academic trajectory and milestones:</p>
 
         <h3 class="section-subtitle">Chronology</h3>
         <ul class="bullet-list">
-          <li>
-            <strong>Winter 2026 &ndash; Present:</strong> Undergraduate Mathematics Student, <em>Technion &ndash; Israel Institute of Technology</em>.
-          </li>
-          <li>
-            <strong>Spring 2025:</strong> External studies at Technion, completing the expanded transfer track requirements (אפיק מעבר).
-          </li>
-          <li>
-            <strong>Winter 2024 &ndash; Winter 2025:</strong> University studies at the <em>Open University of Israel</em> through the Academia in High School program (began at age 14).
-          </li>
-          <li>
-            <strong>Independent Study / Homeschooling:</strong> Transitioned from formal high school to independent, rigorous home study upon recommendation from the school administration and the Ministry of Education.
-          </li>
-          <li>
-            <strong>2024:</strong> Completed the 5-unit advanced high school matriculation exam in mathematics at age 14.
-          </li>
+          <li><strong>Winter 2026 &ndash; Present:</strong> Undergraduate Mathematics Student, <em>Technion &ndash; Israel Institute of Technology</em>.</li>
+          <li><strong>Spring 2025:</strong> External studies at Technion, completing the expanded transfer track requirements (אפיק מעבר).</li>
+          <li><strong>Winter 2024 &ndash; Winter 2025:</strong> University studies at the <em>Open University of Israel</em> through the Academia in High School program (began at age 14).</li>
+          <li><strong>Independent Study / Homeschooling:</strong> Transitioned from formal high school to independent, rigorous home study upon recommendation from the school administration and the Ministry of Education.</li>
+          <li><strong>2024:</strong> Completed the 5-unit advanced high school matriculation exam in mathematics at age 14.</li>
         </ul>
       </section>
 
@@ -877,9 +517,7 @@
       <section id="page-writings" class="page-section">
         <h2 class="page-title">Notes &amp; Writings</h2>
 
-        <p>
-          A selection of study notes, expository write-ups, and early conceptual explorations:
-        </p>
+        <p>A selection of study notes, expository write-ups, and early conceptual explorations:</p>
 
         <h3 class="section-subtitle">Expository &amp; Study Notes</h3>
         <ul class="bullet-list">
@@ -901,44 +539,28 @@
     </main>
   </div>
 
-  <!-- Footer -->
   <footer>
     <div>&copy; 2026 Yehonatan Mimon &bull; Technion &ndash; Israel Institute of Technology</div>
     <div>Last updated: November 2026</div>
   </footer>
 </div>
 
-<!-- Page Switcher Script -->
 <script>
   function showPage(pageId) {
     const pages = document.querySelectorAll('.page-section');
     pages.forEach(p => p.classList.remove('active'));
-
     const navLinks = document.querySelectorAll('nav#sidebar a');
     navLinks.forEach(link => link.classList.remove('active'));
-
     const target = document.getElementById('page-' + pageId);
-    if (target) {
-      target.classList.add('active');
-    }
-
+    if (target) target.classList.add('active');
     const activeLink = document.getElementById('nav-' + pageId);
-    if (activeLink) {
-      activeLink.classList.add('active');
-    }
-
-    if (window.MathJax && window.MathJax.typesetPromise) {
-      MathJax.typesetPromise();
-    }
-
+    if (activeLink) activeLink.classList.add('active');
+    if (window.MathJax && window.MathJax.typesetPromise) MathJax.typesetPromise();
     window.scrollTo(0, 0);
   }
-
   window.addEventListener('DOMContentLoaded', () => {
     const hash = window.location.hash.replace('#', '');
-    if (hash && document.getElementById('page-' + hash)) {
-      showPage(hash);
-    }
+    if (hash && document.getElementById('page-' + hash)) showPage(hash);
   });
 </script>
 
